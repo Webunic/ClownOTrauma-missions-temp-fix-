@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Override>
+  <Missions>
+    <!-- Needs a rework of the Clown Crawler to make it hostile to player for this mission -->
+    <!-- <MonsterMission
+      identifier="clownotrauma_killclowncrawlerswarm"
+      name="missionname.killcrawlerswarm1large"
+      tags="killmonster,killswarm,killswarm_set2"
+      type="Monster"
+      difficulty="3"
+      commonness="900"
+      reward="3500"
+      maxsonarmarkerdistance="10000">
+      <monster character="crawler_clown" min="10" max="12"/>
+      <Reputation identifier="location" amount="2" />
+      <Icon texture="Content/UI/MissionIcons2.png" sourcerect="768,768,256,256" color="214,50,48"/>
+      <message header="missionheader0.killcrawlerswarm2" text="missionmessage0.killcrawlerswarm2"/>
+    </MonsterMission> -->
+    <!-- Basic Clown gear cargo delivery, should give the Clown a chance to steal stuff and use it on the crew. -->
+    <CargoMission identifier="clownotrauma_cargoclowngear" tags="cargoclown" type="Cargo" difficulty="1" commonness="50" reward="500" achievementidentifier="cargomission" requireddeliveryamount="0.98">
+      <Items>
+        <Item identifier="clowncrate" reward="250" maxcount="3">
+          <Item identifier="clownmask" amount="1" />
+          <Item identifier="clowncostume" amount="1" />
+          <Item identifier="bikehorn" amount="1" />
+          <Item identifier="toyhammer" amount="1" />
+          <Item identifier="clownotrauma_grenade_flashbang" amount="1" />
+          <Item identifier="clownotrauma_jokerevolver" amount="1" />
+          <Item identifier="clownotrauma_bowlingball" amount="1" />
+          <Item identifier="clownotrauma_superclownhorn" amount="1" />
+          <Item identifier="clownotrauma_honkmotherposter1" amount="1" />
+          <Item identifier="clownotrauma_fakecigar" amount="1" />
+          <Item identifier="clownotrauma_huskcostume" amount="1" />
+          <Item identifier="clownotrauma_grenade_flashbang" amount="1" />
+        </Item>
+        <Item identifier="clowncrate" reward="250" maxcount="3">
+          <Item identifier="clownotrauma_cultistmask" amount="1" />
+          <Item identifier="clownotrauma_cultistcostume" amount="1" />
+          <Item identifier="bikehorn" amount="1" />
+          <Item identifier="clownotrauma_cultistbloodknife" amount="1" />
+          <Item identifier="clownotrauma_cultistknife_zombie" amount="1" />
+          <Item identifier="clownotrauma_grenade_flashbang" amount="1" />
+        </Item>
+        <Item identifier="clowncrate" reward="250" maxcount="3">
+          <Item identifier="clownotrauma_mimemask" amount="1" />
+          <Item identifier="clownotrauma_mimecostume" amount="1" />
+          <Item identifier="bikehorn" amount="1" />
+          <Item identifier="toyhammer" amount="1" />
+          <Item identifier="clownotrauma_mimecordion" amount="1" />
+          <Item identifier="clownotrauma_mimecordion_sheetmusic_drunkensailor" amount="1" />
+          <Item identifier="clownotrauma_mimecordion_sheetmusic_wellerman" amount="1" />
+          <Item identifier="clownotrauma_mimecordion_sheetmusic_leave_her_johnny" amount="1" />
+          <Item identifier="clownotrauma_honkmotherposter1" amount="1" />
+          <Item identifier="clownotrauma_mimecordion_sheetmusic_spanish_ladies" amount="1" />
+          <Item identifier="clownotrauma_mimecordion_sheetmusic_the_barbery_coast" amount="1" />
+          <Item identifier="clownotrauma_grenade_flashbang" amount="1" />
+        </Item>
+      </Items>
+      <Reputation identifier="clowns" amount="3" />
+      <Icon texture="Content/UI/MissionIcons2.png" sourcerect="768,256,256,256" color="243,146,55" />
+      <LocationType from="AnyOutpost" to="AnyOutpost" />
+    </CargoMission>
+    <!-- Another chance to get clown stuff, showcases the mods items and the talents, yes the clowns have talents when spawned this way instead of via a character tag. -->
+    <AbandonedOutpostMission identifier="clownotrauma_abandonedoutpostpsychoclowns" tags="abandonedoutpost" achievementidentifier="abandonedoutpostdestroyhumans" type="OutpostDestroy" reward="3000" difficulty="4" commonness="20" allowretry="true" targetitem="reactor" unhideentitysubcategories="abandonedhuman">
+      <Icon texture="Content/UI/MissionIcons.png" sourcerect="512,256,256,256" color="214,50,48" />
+      <LocationType identifier="Abandoned" />
+      <LocationTypeChange from="Abandoned" to="Outpost" requireddurationrange="2,3" cooldownafterchange="5" />
+      <TriggerEvent state="0" Delay="5" eventidentifier="clownotrauma_psychoclown" campaignonly="false" />
+      <message header="missionheader0.abandonedoutposthumans" text="missionmessage0.abandonedoutposthumans" />
+    </AbandonedOutpostMission>
+    <!-- Clown rescue mission to give more relations early on. -->
+    <AbandonedOutpostMission identifier="clownotrauma_abandonedoutpostrescueclowns" tags="abandonedoutpost" type="AbandonedOutpost" achievementidentifier="abandonedoutpostrescue" reward="3000" difficulty="4" commonness="20" allowretry="true" hostageskilledmessage="hostageskilled" unhideentitysubcategories="abandonedhuman">
+      <Icon texture="Content/UI/MissionIcons.png" sourcerect="512,256,256,256" color="214,50,48" />
+      <LocationType identifier="Abandoned" />
+      <LocationTypeChange from="Abandoned" to="Outpost" requireddurationrange="2,3" cooldownafterchange="5" />
+      <Characters>
+        <Character identifier="huskextremist" from="abandonedoutpostnpcs" moduleflags="crewmodule" />
+        <Character identifier="huskextremist" from="abandonedoutpostnpcs" moduleflags="researchmodule" />
+        <Character identifier="huskextremist" from="abandonedoutpostnpcs" moduleflags="engineeringmodule" />
+        <Character identifier="huskextremist" from="abandonedoutpostnpcs" moduleflags="securitymodule" />
+        <Character identifier="huskextremist" from="abandonedoutpostnpcs" moduleflags="securitymodule" multiplayeronly="true" />
+        <Character identifier="huskextremist" from="abandonedoutpostnpcs" moduleflags="seccrewmodule" />
+        <Character identifier="huskextremist" from="abandonedoutpostnpcs" moduleflags="seccrewmodule" multiplayeronly="true" />
+        <Character identifier="huskextremist_leader" from="abandonedoutpostnpcs" spawnpointtags="banditleader" />
+        <Character identifier="clownotrauma_psychoclown" from="clownotrauma_clowns" asfaraspossible="true" requirerescue="true" />
+        <Character identifier="clownotrauma_psychoclown" from="clownotrauma_clowns" asfaraspossible="true" requirerescue="true" />
+        <Character identifier="clownotrauma_psychoclown" from="clownotrauma_clowns" asfaraspossible="true" requirerescue="true" multiplayeronly="true" />
+      </Characters>
+      <Reputation identifier="clowns" amount="5" />
+      <Reputation identifier="huskcult" amount="-3" />
+      <message header="missionheader0.abandonedoutpostrescue" text="missionmessage0.abandonedoutpostrescue" />
+    </AbandonedOutpostMission>
+  </Missions>
+</Override>
